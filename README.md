@@ -26,7 +26,7 @@ $ vim --version
 
 ## Prepare vimrc to use some plugins with dein.vim
 In this example, rather than vim-ros, some plugins are installed.
-They are mainly for complete by LSP.
+They are mainly for completation by LSP.
 
 And some configurations of vim are also done in the vimrc.
 
@@ -76,16 +76,17 @@ $ catkin build # At least, workspace must be built before catkin-compile-command
 $ catkin-compile-commands-json # When you applied above bash_user_specific
 $ vim
 ```
-`catkin-compile-commands-json` sets catkin-configuration `-DCMAKE_EXPORT_COMPILE_COMMANDS=ON`,
+`catkin-compile-commands-json` sets catkin-configuration; `-DCMAKE_EXPORT_COMPILE_COMMANDS=ON`,
 and make symbolic-link of `compile_commands.json` for each package.
 The `compile_commands.json` is used for auto-completation such as LSP.
 
-Execute a command ':VimRos' in normal mode to load vim-ros plugin.
+Execute a command `:VimRos` in normal mode to load vim-ros plugin.
 
 ## vim-lsp-settings
 Plugin "vim-lsp-settings" manages to install Language Server.
-When you open a file whose filetype is not used, you can install language server by next command in Vim.
+When you open a file whose filetype is not used ever, you can install language server by next command in Vim.
 ```vim
+:Rosed foo_package bar.cpp
 :LspInstallServer
 
 " check
@@ -96,7 +97,7 @@ When you open a file whose filetype is not used, you can install language server
 ```
 
 Try `:LspHover` on a variable in C++ source code, for example.
-In this repository, ',h' and ',d' are mapped to `:LspHover` and `:LspDocumentDiagnostics` respectively.
+In this repository, `,h` and `,d` are mapped to `:LspHover` and `:LspDocumentDiagnostics` respectively.
 Of cource, you should remap some commands to your favorite keybinds.
 
 ## make
