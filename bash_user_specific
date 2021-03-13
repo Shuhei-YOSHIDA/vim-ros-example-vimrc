@@ -4,7 +4,7 @@
 source `catkin locate --shell-verbs`
 
 # Generate compile_commands.json on catkin-tools
-# https://garaemon.hatenadiary.jp/entry/2020/06/27/161506
+# Reference: https://garaemon.hatenadiary.jp/entry/2020/06/27/161506
 function catkin-compile-commands-json() {
     local catkin_ws=$(echo $CMAKE_PREFIX_PATH | cut -d: -f1)/..
     # Verify catkin cmake args contains -DCMAKE_EXPORT_COMPILE_COMMANDS=ON.
