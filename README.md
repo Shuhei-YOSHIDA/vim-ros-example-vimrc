@@ -8,7 +8,7 @@ In this repository, [forked version](https://github.com/Shuhei-YOSHIDA/vim-ros) 
 # Preparation
 
 ## Install latest and huge Vim
-```bash
+```terminal
 $ sudo apt install software-properties-common
 $ sudo apt update
 $ sudo add-apt-repository ppa:jonathonf/vim
@@ -31,10 +31,16 @@ $ ln -sr ./vimrc ~/.vimrc
 $ ln -sr ./plugins ~/.vim/plugins
 ```
 
+## Add some codes to your bashrc
+This is not necessary. And if you already added equivalent codes, you don't need to do.
+```bash
+
+```
+
 ## Install dein.vim as plugin manager
 Install [dein.vim](https://github.com/Shougo/dein.vim).
 
-```bash
+```terminal
 $ cd
 $ curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > installer.sh
 $ sh ./installer.sh ~/.vim/bundles
@@ -44,3 +50,13 @@ $ vim
 Execute a command `:call dein#install()` in normal mode, and install dein.
 
 # Example of how to use
+
+In this configuration, vim-ros plugin is not loaded to use Vim in other projects without ROS1.
+
+To use vim-ros plugins, follow below steps.
+```terminal
+$ cd your_ws
+$ catkin source # source ./devel/setup.bash
+$ vim
+```
+Execute a command ':VimRos' in normal mode to load vim-ros plugin.
