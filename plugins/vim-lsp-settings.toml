@@ -1,0 +1,84 @@
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+
+hook_add = '''
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+'''
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+depends = ['asyncomplete.vim', 'vim-lsp']
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+hook_add = '''
+noremap <silent> ,h :<C-u>LspHover<CR>
+noremap <silent> ,d :<C-u>LspDocumentDiagnostics<CR>
+'''
+
+[[plugins]]
+repo = 'SirVer/ultisnips'
+
+hook_add = '''
+" Not use <tab> to avoid conflicts to asyncomplete.vim
+let g:UltiSnipsExpandTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+set completeopt+=menuone
+'''
+
+[[plugins]]
+repo = 'honza/vim-snippets'
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+#merged = 0
+
+#[[plugins]]
+#repo = 'prabirshrestha/async.vim'
+
+#[[plugins]]
+#repo = 'thomasfaingnaert/vim-lsp-snippets'
+
+#[[plugins]]
+#repo = 'thomasfaingnaert/vim-lsp-ultisnips'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-ultisnips.vim'
+depends = ['ultisnips', 'asyncomplete.vim']
+
+hook_add = '''
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#ultisnips#get_source_options({
+    \ 'name': 'ultisnips',
+    \ 'allowlist': ['*'],
+    \ 'completor': function('asyncomplete#sources#ultisnips#completor'),
+    \ }))
+'''
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-file.vim'
+depends = ['asyncomplete.vim']
+
+hook_add  = '''
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+    \ 'name': 'file',
+    \ 'allowlist': ['*'],
+    \ 'priority': 10,
+    \ 'completor': function('asyncomplete#sources#file#completor')
+    \ }))
+'''
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-buffer.vim'
+depends = ['asyncomplete.vim']
+
+hook_add = '''
+au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+    \ 'name': 'buffer',
+    \ 'allowlist': ['*'],
+    \ 'completor': function('asyncomplete#sources#buffer#completor')
+    \ }))
+'''

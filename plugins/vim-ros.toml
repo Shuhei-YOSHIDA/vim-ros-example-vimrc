@@ -1,0 +1,14 @@
+[[plugins]]
+repo = 'Shuhei-YOSHIDA/vim-ros'
+on_cmd = 'VimRos'
+rev = 'onlypython3'
+
+#Set cmake options, ex. such below one,  by using catkin config command
+#set makeprg=catkin\ build\ \-DCMAKE_CXX_FLAGS='-fdiagnostics-color=never'\ -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+hook_source = '''
+let g:ros_build_system = "catkin-tools"
+
+autocmd FileType cpp,roslaunch.xml,cmake,xml set shiftwidth=2 tabstop=2
+" For gazebo
+autocmd BufNewFile,BufRead *.{world,sdf} set filetype=xml
+'''
