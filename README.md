@@ -73,7 +73,7 @@ To use vim-ros plugins, follow below steps.
 $ cd your_ws
 $ catkin source # source ./devel/setup.bash
 $ catkin build # At least, workspace must be built before catkin-compile-commands-json
-$ catkin-compile-commands-json # When you applied above bash_user_specific
+$ catkin-compile-commands-json # This is defined when you applied above bash_user_specific
 $ vim
 ```
 `catkin-compile-commands-json` sets catkin-configuration; `-DCMAKE_EXPORT_COMPILE_COMMANDS=ON`,
@@ -97,6 +97,7 @@ When you open a file whose filetype is not used ever, you can install language s
 ```
 
 Try `:LspHover` on a variable in C++ source code, for example.
+
 In this repository, `,h` and `,d` are mapped to `:LspHover` and `:LspDocumentDiagnostics` respectively.
 Of cource, you should remap some commands to your favorite keybinds.
 
